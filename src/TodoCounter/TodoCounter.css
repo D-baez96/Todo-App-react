@@ -9,3 +9,6 @@
     font-weight: bold;
     color: #61dafa;
 }
+.TodoCounter--loading{
+    opacity: 25%;
+}

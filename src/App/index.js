@@ -11,6 +11,7 @@ import { TodoHeader } from '../TodoHeader';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import {UseTodos} from './useTodos';
+import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     searchValue, 
     setSearchValue,
     addTodo,
+    sincronizeTodos
 } = UseTodos ();
 return (
   <>
@@ -87,6 +89,9 @@ return (
               />
           </Modal>
       )}
+      <ChangeAlertWithStorageListener 
+        sincronize= {sincronizeTodos}
+      />
   </>
   );
 }

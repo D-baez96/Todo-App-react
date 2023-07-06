@@ -4,7 +4,7 @@ import React from 'react';
         const [item, setItem] = React.useState(initialValue);
         const [loading, setLoading] = React.useState(true);
         const [error, setError] = React.useState(false);
-
+        const [sincronizedItem, setSincronizedItem] = React.useState(true);
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -18,37 +18,34 @@ import React from 'react';
                     parsedItem = initialValue;
                     }else{
                     parsedItem = JSON.parse(localstorageItem);
-                    setItem(parsedItem);
+                    
                     }
-                
+            setSincronizedItem(true);
+            setItem(parsedItem);
             setLoading(false);
             }catch(error){
                 setLoading(false);
                 setError(true);
             }
         },2000);
-    },);
-
+    },[sincronizedItem]);
 
         const saveItem = (newItem) => {
         localStorage.setItem('TODOS_V1', JSON.stringify(newItem));
         setItem(newItem);
         };
+
+        const sincronizeItem =()=>{
+            setLoading(true);
+            setSincronizedItem(false);
+        }
+
         return {
             item, 
             saveItem,
             loading,
-            error
+            error,
+            sincronizeItem
         };
     }
 export {useLocalStorage};
-
-//   const defaultTodos= [
-//   { text : "Aprender React", completed: true},
-//   { text : "Tomar Tinto", completed: false},
-//   { text : "Lavar La loza", completed: false},
-//   { text : "Tender la cama", completed: false},
-// ];
-
-// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-// localStorage.removeItem('TODOS_V1');

@@ -15,21 +15,29 @@ import { ChangeAlertWithStorageListener } from '../ChangeAlert';
 
 
 function App() {
-  const {
-    loading,
-    error,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-    openModal,
-    setOpenModal,
-    completedTodos,
-    totalTodos,
-    searchValue, 
-    setSearchValue,
-    addTodo,
-    sincronizeTodos
-} = UseTodos ();
+
+const { states,stateUpdaters } = UseTodos ();
+
+const {
+  error,
+  loading,
+  searchedTodos,
+  totalTodos,
+  completeTodo,
+  completedTodos,
+  openModal,
+  searchValue,
+} = states;
+
+const {
+  deleteTodo,
+  setOpenModal,
+  setSearchValue,
+  addTodo,
+  sincronizeTodos,
+} = stateUpdaters;
+
+
 return (
   <>
       <TodoHeader loading = {loading}>

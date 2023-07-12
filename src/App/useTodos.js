@@ -3,11 +3,23 @@ import { useLocalStorage } from "./UseLocalStorage";
 
 
 function UseTodos(){
-    const {item:todos,saveItem:saveTodos,sincronizeItem:sincronizeTodos,loading,error} = useLocalStorage('TODOS_V1',[]);
+    const {
+        item:todos,
+        saveItem:saveTodos,
+        sincronizeItem:sincronizeTodos,
+        loading,
+        error,
+        } = useLocalStorage('TODOS_V1',[]);
+
     const [searchValue, setSearchValue]= React.useState('');
+
     const [openModal,setOpenModal] = React.useState(false);
+
     const completedTodos = todos.filter(todo => !!todo.completed).length;
+
     const totalTodos =  todos.length;
+
+    
     const searchedTodos = todos.filter(
         (todo) =>{
         const todoText = todo.text.toLowerCase();
@@ -42,8 +54,7 @@ function UseTodos(){
         newTodos.splice(todoIndex,1);
         saveTodos(newTodos);
     };
-    return(
-        {
+    return{
             loading,
             error,
             completedTodos,
@@ -58,7 +69,6 @@ function UseTodos(){
             addTodo,
             sincronizeTodos
         }
-    );
 }
 
 

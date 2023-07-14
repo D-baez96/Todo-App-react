@@ -23,14 +23,15 @@ const {
   loading,
   searchedTodos,
   totalTodos,
-  completeTodo,
   completedTodos,
+  
   openModal,
   searchValue,
 } = states;
 
 const {
   deleteTodo,
+  completeTodo,
   setOpenModal,
   setSearchValue,
   addTodo,
